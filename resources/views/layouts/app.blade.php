@@ -272,7 +272,7 @@
 
             <div class="logo">
                 <a href="{{route('home.index')}}">
-                <img src="{{ asset('assets/images/logo.png') }}" alt="Uomo" class="logo__image d-block" />
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="Uomo" class="logo__image d-block" />
                 </a>
             </div>
 
@@ -392,7 +392,7 @@
             <div class="header-desk header-desk_type_1">
                 <div class="logo">
                     <a href="{{route('home.index')}}">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="Uomo" class="logo__image d-block" />
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="Uomo" class="logo__image d-block" />
                     </a>
                 </div>
 
@@ -476,8 +476,8 @@
                     @else
                     <div class="header-tools__item hover-container">
                         <a href="{{ Auth::user()->utype === 'ADM' ? route('admin.index'): route('user.index') }}" class="header-tools__item">
-                       <span class="pr-6px">{{Auth::user()->name}}</span>
-                        <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                            <span class="pr-6px">{{Auth::user()->name}}</span>
+                            <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <use href="#icon_user" />
                             </svg>
@@ -485,10 +485,13 @@
                     </div>
                     @endguest
 
-                    <a href="wishlist.html" class="header-tools__item">
+                    <a href="{{route('wishlist.index')}}" class="header-tools__item header-tools__cart">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <use href="#icon_heart" />
                         </svg>
+                        @if(Cart::instance('wishlist')->content()->count()>0)
+                        <span class="cart-amount d-block position-absolute js-cart-items-count">{{Cart::instance('wishlist')->content()->count()}}</span>
+                        @endif
                     </a>
 
                     <a href="{{route('cart.index')}}" class="header-tools__item header-tools__cart">
@@ -516,7 +519,7 @@
                 <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
                     <div class="logo">
                         <a href="{{route('home.index')}}">
-                        <img src="{{ asset('assets/images/logo.png') }}" alt="SurfsideMedia" class="logo__image d-block" />
+                            <img src="{{ asset('assets/images/logo.png') }}" alt="SurfsideMedia" class="logo__image d-block" />
                         </a>
                     </div>
                     <p class="footer-address">Purok 4 Rang-ay, Banaybanay, Davao Oriental, PH 8208</p>

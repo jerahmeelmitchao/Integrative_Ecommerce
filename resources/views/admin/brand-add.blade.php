@@ -17,7 +17,7 @@
                 <li>
                     <a href="{{route('admin.brands')}}">
                         <div class="text-tiny">Brands</div>
-                    </a>
+                    </a> 
                 </li>
                 <li>
                     <i class="icon-chevron-right"></i>

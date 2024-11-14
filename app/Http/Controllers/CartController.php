@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\Colors\Rgb\Channels\Red;
 use Surfsidemedia\Shoppingcart\Facades\Cart;
-use App\Models\Cart as CartModel; // Import the Cart model
+use App\Models\Cart as CartModel;
+use Illuminate\Support\Facades\Auth;
 
 
 class CartController extends Controller
@@ -18,18 +19,20 @@ class CartController extends Controller
 
     public function add_to_cart(Request $request)
     {
-        Cart::instance('cart')->add($request->id,$request->name,$request->quantity,$request->price)->associate('App\Models\Product');
-
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You must be logged in to add items to the cart.');
+        }
+    
+        Cart::instance('cart')->add($request->id, $request->name, $request->quantity, $request->price)->associate('App\Models\Product');
+    
         CartModel::create([
+            'user_id' => Auth::id(),
             'product_id' => $request->id,
             'name' => $request->name,
             'quantity' => $request->quantity,
         ]);
     
-
         return redirect()->back();
-
-
     }
     
 
