@@ -1,0 +1,174 @@
+/* Modal background overlay removal */
+.modal-backdrop {
+    display: none !important;
+}
+
+/* Modal Dialog */
+.modal-dialog {
+    max-width: 800px;
+    margin: 1.75rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Header */
+.modal-header {
+    border-bottom: 2px solid #eee;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header .modal-title {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.modal-header .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 20px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Form Style */
+.form-new-product input,
+.form-new-product select,
+.form-new-product textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 8px;
+    font-size: 1rem;
+}
+
+.form-new-product input:focus,
+.form-new-product select:focus,
+.form-new-product textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.form-new-product .body-title {
+    font-weight: bold;
+    color: #333;
+}
+
+.upload-image .up-load {
+    border: 2px dashed #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.upload-image .up-load:hover {
+    background-color: #f9f9f9;
+}
+
+.upload-image .uploadfile {
+    font-size: 1rem;
+    color: #3498db;
+    cursor: pointer;
+}
+
+.upload-image .uploadfile .icon {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.upload-image .item img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+/* Button */
+.tf-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tf-button:hover {
+    background-color: #2980b9;
+}
+
+.bot {
+    text-align: right;
+}
+
+/* Error Message Style */
+.alert-danger {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.breadcrumbs li {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.breadcrumbs li a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+.breadcrumbs li a:hover {
+    text-decoration: underline;
+}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-top: 2px solid #eee;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #ddd;
+    border: none;
+    color: #333;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #ccc;
+}
