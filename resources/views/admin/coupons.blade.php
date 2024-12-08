@@ -1,13 +1,12 @@
 @extends('layouts.admin')
 @section('content')
-
 <div class="main-content-inner">
     <div class="main-content-wrap">
         <div class="flex items-center flex-wrap justify-between gap20 mb-27">
-            <h3>Categories</h3>
+            <h3>Coupons</h3>
             <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                 <li>
-                    <a href="{{route('admin.index')}}">
+                    <a href="{{ route('admin.index') }}">
                         <div class="text-tiny">Dashboard</div>
                     </a>
                 </li>
@@ -15,7 +14,7 @@
                     <i class="icon-chevron-right"></i>
                 </li>
                 <li>
-                    <div class="text-tiny">Categories</div>
+                    <div class="text-tiny">Coupons</div>
                 </li>
             </ul>
         </div>
@@ -33,7 +32,7 @@
                         </div>
                     </form>
                 </div>
-                <a class="tf-button style-1 w208" href="{{route('admin.category.add')}}"><i
+                <a class="tf-button style-1 w208" href="{{route('admin.coupon.add')}}"><i
                         class="icon-plus"></i>Add new</a>
             </div>
             <div class="wg-table table-all-user">
@@ -45,36 +44,31 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Slug</th>
-                                <th>Products</th>
+                                <th>Code</th>
+                                <th>Type</th>
+                                <th>Value</th>
+                                <th>Cart Value</th>
+                                <th>Expiry Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($categories as $category)
+                            @foreach($coupons as $coupon)
                             <tr>
-                                <td>{{$category->id}}</td>
-                                <td class="pname">
-                                    <div class="image">
-                                        <img src="{{ asset('uploads/categories/' . $category->image) }}" alt="{{ $category->name }}" class="image">
-                                    </div>
-                                    <div class="name">
-                                        <a href="#" class="body-title-2">{{ $category->name }}</a>
-                                    </div>
-                                </td>
-                                <td>{{ $category->slug }}</td>
-                                <td><a href="#" target="_blank">0</a></td>
+                                <td>{{ $coupon->id }}</td>
+                                <td>{{ $coupon->code }}</td>
+                                <td>{{ $coupon->type }}</td>
+                                <td>{{ $coupon->value }}</td>
+                                <td>₱{{ $coupon->cart_value }}</td>
+                                <td>{{ $coupon->expiry_date }}</td>
                                 <td>
                                     <div class="list-icon-function">
-                                        <a href="{{route('admin.category.edit',['id'=>$category->id])}}">
+                                        <a href="#">
                                             <div class="item edit">
                                                 <i class="icon-edit-3"></i>
                                             </div>
                                         </a>
-                                        <form action="{{route('admin.category.delete', ['id'=>$category->id])}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
+                                        <form action="#" method="POST">
                                             <div class="item text-danger delete">
                                                 <i class="icon-trash-2"></i>
                                             </div>
@@ -83,40 +77,15 @@
                                 </td>
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
-                <div class="divider"></div>
-                <div class="flex items-center justify-between flex-wrap gap10 wgp-pagination">
-                    {{$categories->links('pagination::bootstrap-5')}}
-                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="flex items-center justify-between flex-wrap gap10 wgp-pagination">
+                {{ $coupons->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-@push('scripts')
-<script>
-    $(function() {
-        $('.delete').on('click', function(e) {
-            e.preventDefault(); // Pass 'e' to access the event object
-            
-            var form = $(this).closest('form');
-            swal({
-                title: "Are you sure?",
-                text: "You want to delete this record?",
-                icon: "warning", // 'type' should be 'icon' with 'sweetalert'
-                buttons: ["No", "Yes"],
-                dangerMode: true, // Makes the "Yes" button red
-            }).then(function(result) {
-                if (result) {
-                    form.submit();
-                }
-            });
-        });
-    });
-</script>
-
-@endpush

@@ -30,12 +30,17 @@ Route::delete('/wishlist/clear', [WishlistController::class, 'empty_wishlist'])-
 
 Route::post('wishlist/move-to-cart/{rowId}', [WishlistController::class, 'move_to_cart'])->name('wishlist.move.to.cart');
 
+Route::get('/checkout', [CartController::class,'checkout'])->name('cart.checkout');
+Route::post('/place-an-order', [CartController::class,'place_an_order'])->name('cart.place.an.order');
+Route::get('/order-confirmation', [CartController::class,'order_confirmation'])->name('cart.order.confirmation');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
 });
 
 Route::middleware(['auth', AuthAdmin::class])->group(function () {
+    
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/brands', [AdminController::class, 'brands'])->name('admin.brands');
     Route::get('/admin/brand/add', [AdminController::class, 'add_brand'])->name('admin.brand.add');
@@ -57,4 +62,10 @@ Route::middleware(['auth', AuthAdmin::class])->group(function () {
     Route::get('admin/product/{id}/edit', [AdminController::class, 'product_edit'])->name('admin.product.edit');
     Route::put('/admin/product/update', [AdminController::class, 'product_update'])->name('admin.product.update');
     Route::delete('/admin/product/{id}/delete', [AdminController::class, 'product_delete'])->name('admin.product.delete');
+
+    Route::get('/admin/coupons',[AdminController::class,'coupons'])->name('admin.coupons');
+    Route::get('/admin/coupon/add',[AdminController::class,'coupon_add'])->name('admin.coupon.add');
+    Route::post('/admin/coupon/store',[AdminController::class,'coupon_store'])->name('admin.coupon.store');
+
+
 });
