@@ -6,7 +6,7 @@
         <h2 class="page-title">My Account</h2>
         <div class="row">
             <div class="col-lg-3">
-               @include('user.account-nav')
+                @include('user.account-nav')
             </div>
             <div class="col-lg-9">
                 <div class="page-content my-account__dashboard">

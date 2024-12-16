@@ -34,9 +34,19 @@ Route::get('/checkout', [CartController::class,'checkout'])->name('cart.checkout
 Route::post('/place-an-order', [CartController::class,'place_an_order'])->name('cart.place.an.order');
 Route::get('/order-confirmation', [CartController::class,'order_confirmation'])->name('cart.order.confirmation');
 
+Route::get('/search', [HomeController::class,'search'])->name('home.search');
+
+
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
+    Route::get('/account-orders', [UserController::class, 'orders'])->name('user.orders');
+    Route::get('/account-order/{order_id}/details', [UserController::class, 'order_details'])->name('user.order.details');
+    Route::put('/account-order/cancel-order', [UserController::class, 'order_cancel'])->name('user.order.cancel');
+
+
 });
 
 Route::middleware(['auth', AuthAdmin::class])->group(function () {
@@ -67,5 +77,10 @@ Route::middleware(['auth', AuthAdmin::class])->group(function () {
     Route::get('/admin/coupon/add',[AdminController::class,'coupon_add'])->name('admin.coupon.add');
     Route::post('/admin/coupon/store',[AdminController::class,'coupon_store'])->name('admin.coupon.store');
 
+    Route::get('/admin/orders',[AdminController::class,'orders'])->name('admin.orders');
+    Route::get('/admin/order/{order_id}/details',[AdminController::class,'order_details'])->name('admin.order.details'); 
+    Route::put('/admin/order/update-status',[AdminController::class,'update_order_status'])->name('admin.order.status.update');    
+
+    Route::get('/admin/search', [HomeController::class,'search'])->name('admin.search');
 
 });

@@ -20,7 +20,7 @@ class ShopController extends Controller
         $min_price = $request->query('min') ? $request->query('min') : 1;
         $max_price = $request->query('max') ? $request->query('max') : 2000;
 
-        switch ($order) {
+        switch ($order) {                                                                                                                       
             case 1:
                 $o_column = "created_at";
                 $o_order = "DESC";
